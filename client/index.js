@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {withQuery} from 'meteor/cultofcoders:grapher-react';
-import {tasksQuery, tasksScopedQuery} from "../imports/queries";
+import {tasksQuery, tasksScopedQuery, usersQuery} from "../imports/queries";
 
 const TasksList = props => {
     const {isLoading, data: tasks} = props;
@@ -32,6 +32,27 @@ const TasksListScopedWrapper = withQuery(props => {
     reactive: true,
 })(TasksList);
 
+const UsersList = props => {
+    const {isLoading, data: users} = props;
+    if (isLoading) {
+        return null;
+    }
+
+    return (
+        <ul>
+            {users.map(user => <li key={user._id}>{`${user.name} - friends ${user.friends.map(({name}) => name).join(', ')}`}</li>)}
+        </ul>
+    );
+};
+
+const UsersListWrapper = withQuery(props => {
+    return usersQuery.clone({
+        name: props.name,
+    });
+}, {
+    reactive: true,
+})(UsersList);
+
 class App extends Component {
     render() {
         return (
@@ -57,6 +78,11 @@ class App extends Component {
                 </div>
 
                 <p>Scoped query works as expected because its documents are filtered by subscriptionId and since this is unique for each subscription.</p>
+
+                <h2>With scope, with linked collection the same as starting collection</h2>
+                <div>
+                    <UsersListWrapper name="User 4" />
+                </div>
             </div>
         );
     }
