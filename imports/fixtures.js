@@ -1,12 +1,13 @@
-import {Tasks} from "./collections";
+import {Tasks, TasksScoped} from "./collections";
 
 Tasks.remove({});
+TasksScoped.remove({});
 
 _.times(3, n => {
-    console.log('n ', n);
-
-    Tasks.insert({
+    const doc = {
         name: `Task ${n + 1}`,
         priority: n < 2 ? 1 : 2,
-    });
+    };
+    Tasks.insert(doc);
+    TasksScoped.insert(doc);
 });

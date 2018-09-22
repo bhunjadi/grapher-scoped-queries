@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {withQuery} from 'meteor/cultofcoders:grapher-react';
-import {tasksQuery} from "../imports/queries";
+import {tasksQuery, tasksScopedQuery} from "../imports/queries";
 
 const TasksList = props => {
     const {isLoading, data: tasks} = props;
@@ -16,11 +16,17 @@ const TasksList = props => {
     );
 };
 
-const TasksListWrapper = withQuery(() => {
+const TasksListWrapper = withQuery(props => {
     return tasksQuery.clone({
-        filters: {
-            priority: 1,
-        },
+        priority: props.priority,
+    });
+}, {
+    reactive: true,
+})(TasksList);
+
+const TasksListScopedWrapper = withQuery(props => {
+    return tasksScopedQuery.clone({
+        priority: props.priority,
     });
 }, {
     reactive: true,
@@ -32,7 +38,20 @@ class App extends Component {
             <div>
                 <h2>Queries without scope</h2>
                 <div>
-                    <TasksListWrapper />
+                    <TasksListWrapper priority={1} />
+                </div>
+
+                <div>
+                    <TasksListWrapper priority={2} />
+                </div>
+
+                <h2>Queries with scope</h2>
+                <div>
+                    <TasksListScopedWrapper priority={1} />
+                </div>
+
+                <div>
+                    <TasksListScopedWrapper priority={2} />
                 </div>
             </div>
         );
