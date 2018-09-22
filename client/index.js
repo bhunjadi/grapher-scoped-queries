@@ -45,6 +45,8 @@ class App extends Component {
                     <TasksListWrapper priority={2} />
                 </div>
 
+                <p>"Normal" query that does not do any client side filtering does not work as expected. All task documents are merged because datasets are merged on the client side.</p>
+
                 <h2>Queries with scope</h2>
                 <div>
                     <TasksListScopedWrapper priority={1} />
@@ -53,6 +55,8 @@ class App extends Component {
                 <div>
                     <TasksListScopedWrapper priority={2} />
                 </div>
+
+                <p>Scoped query works as expected because its documents are filtered by subscriptionId and since this is unique for each subscription.</p>
             </div>
         );
     }

@@ -1,9 +1,6 @@
 import {Tasks, TasksScoped} from "./collections";
 
 export const tasksQuery = Tasks.createQuery('getTasks', {
-    // $filter({filters, options, params}) {
-    //     // here we prevent default filtering on the client (params.filters), using only server-side filtering
-    // },
     name: 1,
     priority: 1,
 }, {
@@ -11,13 +8,10 @@ export const tasksQuery = Tasks.createQuery('getTasks', {
 });
 
 export const tasksScopedQuery = TasksScoped.createQuery('getTasksScoped', {
-    $filter() {
-
-    },
     name: 1,
     priority: 1,
 }, {
-    // this is the default
+    // true is the default anyway
     scoped: true,
 });
 
