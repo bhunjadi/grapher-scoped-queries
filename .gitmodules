@@ -1,0 +1,4 @@
+[submodule "packages/grapher"]
+	path = packages/grapher
+	url = https://github.com/bhunjadi/grapher.git
+	branch = stable
