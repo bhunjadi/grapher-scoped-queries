@@ -57,23 +57,52 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h2>Queries without scope</h2>
+                <h2>
+                    Available Queries
+                </h2>
                 <div>
+                    <ul>
+                        <li>
+                            tasksQuery - not scoped, fetches tasks by priority
+                        </li>
+                        <li>
+                            tasksScopedQuery - scoped, fetches tasks by priority
+                        </li>
+                        <li>
+                            usersQuery - scoped, fetches users by name
+                        </li>
+                    </ul>
+                </div>
+
+                <h2>Without scope - tasksQuery</h2>
+                <div>
+                    <p>
+                        Using <b>tasksQuery</b> and filtering by priority=1.
+                    </p>
                     <TasksListWrapper priority={1} />
                 </div>
 
                 <div>
+                    <p>
+                        Using <b>tasksQuery</b> and filtering by priority=2.
+                    </p>
                     <TasksListWrapper priority={2} />
                 </div>
 
                 <p>"Normal" query that does not do any client side filtering does not work as expected. All task documents are merged because datasets are merged on the client side.</p>
 
-                <h2>Queries with scope</h2>
+                <h2>Scoped - tasksScopedQuery</h2>
                 <div>
+                    <p>
+                        Using <b>tasksScopedQuery</b> and filtering by priority=1.
+                    </p>
                     <TasksListScopedWrapper priority={1} />
                 </div>
 
                 <div>
+                    <p>
+                        Using <b>tasksScopedQuery</b> and filtering by priority=2.
+                    </p>
                     <TasksListScopedWrapper priority={2} />
                 </div>
 
