@@ -74,7 +74,7 @@ class App extends Component {
                     </ul>
                 </div>
 
-                <h2>Case 1: interquery collisions</h2>
+                <h2>Case 1: interquery overlap</h2>
                 <h3>Without scope - tasksQuery</h3>
                 <div>
                     <p>
@@ -109,14 +109,20 @@ class App extends Component {
 
                 <p>Scoped query works as expected because its documents are filtered by subscriptionId and since this is unique for each subscription.</p>
 
-                <h2>Case 2: intraquery collsions</h2>
-                <h3>With scope, with linked collection the same as starting collection</h3>
+                <h2>Case 2: intraquery overlap</h2>
+                <h3>Scoped, with linked collection the same as starting collection (users)</h3>
+
+                <p>In this example, users collection is used. Each user can have friends (stored in friendIds) and there
+                    is a <strong>friends</strong> link added to the Users collection</p>
+
+                <p>Only User 4 is fetched by name, and this users is set to have User 1, 2 and 3 for friends</p>
+
                 <div>
                     <UsersListWrapper name="User 4" />
                 </div>
 
                 <p>
-                    It is expected to see only User 4 in the list above.
+                    We see all the users here, but only User 4 is expected.
                 </p>
             </div>
         );
