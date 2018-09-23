@@ -74,7 +74,8 @@ class App extends Component {
                     </ul>
                 </div>
 
-                <h2>Without scope - tasksQuery</h2>
+                <h2>Case 1: interquery collisions</h2>
+                <h3>Without scope - tasksQuery</h3>
                 <div>
                     <p>
                         Using <b>tasksQuery</b> and filtering by priority=1.
@@ -91,7 +92,7 @@ class App extends Component {
 
                 <p>"Normal" query that does not do any client side filtering does not work as expected. All task documents are merged because datasets are merged on the client side.</p>
 
-                <h2>Scoped - tasksScopedQuery</h2>
+                <h3>Scoped - tasksScopedQuery</h3>
                 <div>
                     <p>
                         Using <b>tasksScopedQuery</b> and filtering by priority=1.
@@ -108,10 +109,15 @@ class App extends Component {
 
                 <p>Scoped query works as expected because its documents are filtered by subscriptionId and since this is unique for each subscription.</p>
 
-                <h2>With scope, with linked collection the same as starting collection</h2>
+                <h2>Case 2: intraquery collsions</h2>
+                <h3>With scope, with linked collection the same as starting collection</h3>
                 <div>
                     <UsersListWrapper name="User 4" />
                 </div>
+
+                <p>
+                    It is expected to see only User 4 in the list above.
+                </p>
             </div>
         );
     }

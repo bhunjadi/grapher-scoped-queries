@@ -19,7 +19,6 @@ export const tasksScopedQuery = TasksScoped.createQuery('getTasksScoped', {
     name: 1,
     priority: 1,
 }, {
-    // true is the default anyway
     scoped: true,
 });
 
