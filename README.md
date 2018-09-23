@@ -1,8 +1,8 @@
 ## How to run
 
 ```
-git clone git@github.com:bhunjadi/grapher-scoped-queries.git <folder>
-git submodule update --remote
+git clone --recurse-submodules git@github.com:bhunjadi/grapher-scoped-queries.git <folder>
+cd <folder>
 
 meteor
 ```
