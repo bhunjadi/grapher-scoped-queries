@@ -4,10 +4,10 @@ Tasks.remove({});
 TasksScoped.remove({});
 Users.remove({});
 
-_.times(3, n => {
+_.times(5, n => {
     const doc = {
         name: `Task ${n + 1}`,
-        priority: n < 2 ? 1 : 2,
+        priority: n < 2 ? 1 : n < 4 ? 2 : 3,
     };
     Tasks.insert(doc);
     TasksScoped.insert(doc);

@@ -12,7 +12,7 @@ callback-hook@1.1.0
 check@1.3.1
 coffeescript@2.0.3_4
 coffeescript-compiler@2.0.3_4
-cultofcoders:grapher@1.3.6
+cultofcoders:grapher@1.3.7_4
 cultofcoders:grapher-react@0.1.3
 dburles:mongo-collection-instances@0.3.5
 ddp@1.4.0
